@@ -1,0 +1,131 @@
+int m1a = 9;
+int m1b = 10;
+int m2a = 11;
+int m2b = 12;
+int LED1 = 2;
+int SER_1 = 3;
+int M_A  = 4;
+int M_B  = 5;
+char val;
+
+void setup() 
+{ 
+pinMode(m1a, OUTPUT);  
+pinMode(m1b, OUTPUT);  
+pinMode(m2a, OUTPUT);  
+pinMode(m2b, OUTPUT);  
+pinMode(LED1,OUTPUT);  
+pinMode(SER_1,OUTPUT);  
+pinMode(M_A,OUTPUT);   
+pinMode(M_B,OUTPUT);  
+Serial.begin(9600);
+}
+
+void loop()
+{
+  
+  
+  while (Serial.available() > 0)
+  {
+  val = Serial.read();
+  Serial.println(val);
+  }
+
+  if( val == 'F') // Forward
+    {
+      digitalWrite(m1a, LOW);
+      digitalWrite(m1b, HIGH);
+      digitalWrite(m2a, HIGH);
+      digitalWrite(m2b, LOW);  
+    }
+  else if(val == 'B') // Backward
+    {
+      digitalWrite(m1a, HIGH);
+      digitalWrite(m1b, LOW);
+      digitalWrite(m2a, LOW);
+      digitalWrite(m2b, HIGH); 
+    }
+  
+    else if(val == 'L') //Left
+    {
+    digitalWrite(m1a, LOW);
+    digitalWrite(m1b, LOW);
+    digitalWrite(m2a, HIGH);
+    digitalWrite(m2b, LOW);
+    }
+    else if(val == 'R') //Right
+    {
+    digitalWrite(m1a, LOW);
+    digitalWrite(m1b, HIGH);
+    digitalWrite(m2a, LOW);
+    digitalWrite(m2b, LOW); 
+    }
+    
+  else if(val == 'S') //Stop
+    {
+    digitalWrite(m1a, LOW);
+    digitalWrite(m1b, LOW);
+    digitalWrite(m2a, LOW);
+    digitalWrite(m2b, LOW); 
+    }
+  else if(val == 'I') //Forward Right
+    {
+    digitalWrite(m1a, HIGH);
+    digitalWrite(m1b, LOW);
+    digitalWrite(m2a, LOW);
+    digitalWrite(m2b, LOW);
+    }
+  else if(val == 'J') //Backward Right
+    {
+    digitalWrite(m1a, LOW);
+    digitalWrite(m1b, HIGH);
+    digitalWrite(m2a, LOW);
+    digitalWrite(m2b, LOW);
+    }
+   else if(val == 'G') //Forward Left
+    {
+    digitalWrite(m1a, LOW);
+    digitalWrite(m1b, LOW);
+    digitalWrite(m2a, HIGH);
+    digitalWrite(m2b, LOW);
+    }
+  else if(val == 'H') //Backward Left
+    {
+    digitalWrite(m1a, LOW);
+    digitalWrite(m1b, LOW);
+    digitalWrite(m2a, LOW);
+    digitalWrite(m2b, HIGH); 
+    }
+    else if(val == 'W')
+    {
+      digitalWrite(LED1, HIGH);
+       
+    }
+    else if(val == 'w') 
+    {
+      digitalWrite(LED1, LOW);
+       
+    }
+     else if(val == 'X') 
+    {
+      digitalWrite(SER_1, HIGH);
+    }
+    else if(val == 'x') 
+    {
+       digitalWrite(SER_1, LOW);             
+                                       
+    }
+     else if(val == 'V')
+    {
+      digitalWrite(M_A, HIGH);
+      digitalWrite(M_B, LOW);
+       
+    }
+    else if(val == 'v') 
+    {
+      digitalWrite(M_A, LOW);
+      digitalWrite(M_B, LOW);
+    }  
+   
+ }
+    
